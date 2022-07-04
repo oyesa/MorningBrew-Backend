@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cloudinary',
+    'community',
 ]
 
 MIDDLEWARE = [
@@ -80,8 +81,8 @@ DATABASES = {
      {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mzazidb',
-        'USER': 'oyesa',
-        'PASSWORD':'Mimo33',
+        'USER': 'moringa',
+        'PASSWORD':'jaelatieno',
     }
 }
 
