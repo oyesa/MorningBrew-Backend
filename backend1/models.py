@@ -33,4 +33,13 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
     post = models.ForeignKey(Post, related_name = "comment", on_delete=models.CASCADE)
 
+class Group(models.Model):
+    CATEGORY =(
+        ('Wellbeing','Wellbeing'),
+        ('Single Parent with Children with Additional Needs (CAN)','Single Parent with Children with Additional Needs (CAN)'),
+        ('Single Parent Fathers','Single Parent Fathers'),        
+    )
     
+    category = models.CharField(max_length=200, null=True, choices=CATEGORY)
+    image = CloudinaryField('image',null=True)
+    description = models.TextField()
