@@ -7,3 +7,13 @@ from .serializer import *
 class ServiceViewSet(ModelViewSet):
     serializer_class=ServiceSerializer
     queryset=Service.objects.all()
+
+
+class PostViewSet(ModelViewSet):
+    serializer_class=PostSerializer
+    queryset=Post.objects.all()
+
+
+class CommentViewSet(ModelViewSet):
+    serializer_class=CommentSerializer
+    queryset=Comment.objects.all()

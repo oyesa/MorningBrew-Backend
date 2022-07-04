@@ -21,7 +21,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200,blank=True)
     description = models.TextField()
     post_date = models.DateField(auto_now_add=True)
-    image = CloudinaryField('image', default='image')
+    image = CloudinaryField('image',null=True)
     # comment = models.ForeignKey(Comment,on_delete=models.CASCADE, related_name='comment',null=True)
 
     def save_post(self):
@@ -33,5 +33,4 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
     post = models.ForeignKey(Post, related_name = "comment", on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f'{self.user.comment} Post'
+    

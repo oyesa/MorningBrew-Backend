@@ -20,3 +20,15 @@ class ServiceSerializer(serializers.ModelSerializer):
         model = Service
         # fields = '__all__'
         fields = ['title','image','user','description']
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        # fields = '__all__'
+        fields = ['title','image','user','description','post_date']
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        # fields = ['title','image','user','description']
