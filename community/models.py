@@ -17,6 +17,12 @@ class Community(models.Model):
     description = models.TextField(blank=True, max_length=300)
     category = models.CharField(max_length=50, null=True, choices=CATEGORY)
 
+class Hood(models.Model):
+    name = models.CharField(max_length=100,blank=True)
+    location= models.CharField(max_length=60, blank=True, null=True)
+    description = models.TextField(blank=True, max_length=300)
+
+ 
 
 
 
