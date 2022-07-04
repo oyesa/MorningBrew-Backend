@@ -21,3 +21,7 @@ class CommentViewSet(ModelViewSet):
 class GroupViewSet(ModelViewSet):
     serializer_class=GroupSerializer
     queryset=Group.objects.all()
+
+class TestimonialsViewSet(ModelViewSet):
+    serializer_class=TestimonialsSerializer
+    queryset=Testimonials.objects.all()

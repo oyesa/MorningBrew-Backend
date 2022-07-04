@@ -38,3 +38,9 @@ class GroupSerializer(serializers.ModelSerializer):
         model = Group
         # fields = '__all__'
         fields = ['category','image','description']
+
+class TestimonialsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Testimonials
+        # fields = '__all__'
+        fields = ['user','title','description','date_posted']
