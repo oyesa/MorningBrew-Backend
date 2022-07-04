@@ -22,6 +22,10 @@ class Hood(models.Model):
     location= models.CharField(max_length=60, blank=True, null=True)
     description = models.TextField(blank=True, max_length=300)
 
+
+    def __str__(self):
+        return self.name
+
  
 
 

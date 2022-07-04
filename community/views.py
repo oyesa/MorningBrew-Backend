@@ -46,5 +46,9 @@ def showcommunity(request, pk):
         Community.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class HoodViewSet(viewsets.ModelViewSet):
+    queryset = Hood.objects.all()
+    serializer_class = HoodSerializer
+
 
 

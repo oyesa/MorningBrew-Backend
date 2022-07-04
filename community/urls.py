@@ -7,6 +7,9 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register('community', views.CommunityViewSet)
+router.register('hood', views.HoodViewSet)
+
+
 
 urlpatterns = [
     path('api/',include(router.urls)),
