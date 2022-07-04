@@ -26,6 +26,19 @@ class Hood(models.Model):
     def __str__(self):
         return self.name
 
+class Event(models.Model):
+    title = models.CharField(max_length=200,blank=True)
+    image= CloudinaryField('image' , default='image')
+    description = models.TextField(blank=True, max_length=300)
+    date = models.DateTimeField(auto_now_add=True, null=True)
+
+    def save_event(self):
+        self.save()
+
+
+
+
+
  
 
 
