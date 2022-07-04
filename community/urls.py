@@ -8,6 +8,7 @@ from . import views
 router = routers.DefaultRouter()
 router.register('community', views.CommunityViewSet)
 router.register('hood', views.HoodViewSet)
+router.register('event', views.EventViewSet)
 
 
 

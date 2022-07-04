@@ -17,6 +17,10 @@ class Community(models.Model):
     description = models.TextField(blank=True, max_length=300)
     category = models.CharField(max_length=50, null=True, choices=CATEGORY)
 
+
+    def __str__(self):
+       return self.category
+
 class Hood(models.Model):
     name = models.CharField(max_length=100,blank=True)
     location= models.CharField(max_length=60, blank=True, null=True)
@@ -34,6 +38,10 @@ class Event(models.Model):
 
     def save_event(self):
         self.save()
+
+
+    def __str__(self):
+        return self.title
 
 
 

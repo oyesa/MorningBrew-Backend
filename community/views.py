@@ -51,4 +51,8 @@ class HoodViewSet(viewsets.ModelViewSet):
     serializer_class = HoodSerializer
 
 
+class EventViewSet(viewsets.ModelViewSet):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+
 
