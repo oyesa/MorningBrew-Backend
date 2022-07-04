@@ -17,3 +17,7 @@ class PostViewSet(ModelViewSet):
 class CommentViewSet(ModelViewSet):
     serializer_class=CommentSerializer
     queryset=Comment.objects.all()
+
+class GroupViewSet(ModelViewSet):
+    serializer_class=GroupSerializer
+    queryset=Group.objects.all()
