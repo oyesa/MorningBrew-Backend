@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cloudinary',
+    'mzaziauth',
 ]
 
 MIDDLEWARE = [
@@ -75,13 +76,22 @@ WSGI_APPLICATION = 'mzaziproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#      'default':
+#      {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mzazidb',
+#         'USER': 'oyesa',
+#         'PASSWORD':'Mimo33',
+#     }
+# }
 DATABASES = {
      'default':
      {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mzazidb',
-        'USER': 'oyesa',
-        'PASSWORD':'Mimo33',
+        'USER': 'raine',
+        'PASSWORD':'gift1234',
     }
 }
 
