@@ -33,6 +33,8 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
     post = models.ForeignKey(Post, related_name = "comment", on_delete=models.CASCADE)
 
+    def save_group(self):
+        self.save()
 class Group(models.Model):
     CATEGORY =(
         ('Wellbeing','Wellbeing'),
@@ -43,3 +45,15 @@ class Group(models.Model):
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
     image = CloudinaryField('image',null=True)
     description = models.TextField()
+
+    def save_group(self):
+        self.save()
+
+class Testimonials(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
+    title = models.CharField(max_length=200,blank=True)
+    description = models.TextField()
+    date_posted =  models.DateField(auto_now_add=True)
+
+    def save_group(self):
+        self.save()

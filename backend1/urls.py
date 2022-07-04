@@ -6,6 +6,7 @@ router = DefaultRouter()
 router.register('service',ServiceViewSet)
 router.register('post',PostViewSet)
 router.register('comment',CommentViewSet)
+router.register('group',GroupViewSet)
 
 urlpatterns = [
     path('api/',include(router.urls)),
