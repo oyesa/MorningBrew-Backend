@@ -49,19 +49,7 @@ class CustomUserManager(BaseUserManager):
 
       return customUser
   
-# class UserRole(models.Model):
-    
-#     CHOICES = [
-#     ('SingleParent', 'SingleParent'),
-#     ('Counsellor', 'Counsellor'),
-#     ]
 
-#     user_role = models.CharField( choices=CHOICES, max_length=30,null=False, blank=False)
-    
-#     def save_role(self):
-#       self.save()
-#     def __str__(self):
-#       return self.user_role
   
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     
@@ -69,10 +57,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         SINGLEPARENT='SINGLEPARENT','SingleParent'
         COUNSELLOR='COUNSELLOR','Counsellor'
         
-        
-    
-    
-    
+
     
     username = models.CharField(db_index=True, max_length=255, unique=True)
     f_name = models.CharField(('First Name'), max_length=50, blank=True)
