@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'cloudinary',
     'mzaziauth',
+    'phonenumber_field',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -131,8 +133,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+AUTH_USER_MODEL = 'mzaziauth.CustomUser'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+    #    'rest_framework.authentication.TokenAuthentication',
+    #    
+    #    'rest_framework_simplejwt.authentication.JWTAuthentication'
+       'mzaziauth.backends.JWTAuthentication',
+       'rest_framework.authentication.SessionAuthentication',
+       
+   ),
+   'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.IsAdminUser', ),
+}
+
