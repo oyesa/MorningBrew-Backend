@@ -29,9 +29,6 @@ class RegistrationAPIView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         
-        # token = AuthTokenHandler.create_auth_token(user)
-        # data["token"] = token.key
-      
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 class LoginAPIView(GenericAPIView):

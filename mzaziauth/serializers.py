@@ -16,8 +16,6 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class RegistrationSerializer(serializers.ModelSerializer):
     """Serializers registration requests and creates a new user."""
-    
-    
 
    
     password = serializers.CharField(
