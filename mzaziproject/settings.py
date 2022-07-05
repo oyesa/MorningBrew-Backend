@@ -4,10 +4,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-pelfeo^rdd*99h%gsj$5@e_cl_s5fy&sn==)g$or6ub&0128wp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -27,10 +23,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cloudinary',
-    'authLogin',
-    'rest_framework.authtoken',
+    'mzaziauth',
     'phonenumber_field',
-
+    'rest_framework.authtoken',
 ]
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_STORAGE = {
@@ -78,8 +73,8 @@ DATABASES = {
      {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mzazidb',
-        'USER': 'moringa',
-        'PASSWORD':'Mimo43',
+        'USER': 'oyesa',
+        'PASSWORD':'Mimo33',
     }
 }
 
@@ -115,21 +110,19 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
 STATIC_URL = 'static/'
-# the user we are using
-AUTH_USER_MODEL = 'authLogin.User'
+AUTH_USER_MODEL = 'mzaziauth.CustomUser'
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#rest api settings
+
 REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
-       'rest_framework.authentication.TokenAuthentication',
+       'mzaziauth.backends.JWTAuthentication',
        'rest_framework.authentication.SessionAuthentication',
+       
    ),
-   'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAdminUser',
-   ),
+   'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.IsAdminUser', ),
 }
+
