@@ -5,33 +5,36 @@ from rest_framework import serializers
 from .models import *
 from django.contrib.auth.models import User
 
-# class UserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = [
-#             'username', 
-#             'first_name', 
-#             'last_name', 
-#             'id',
-#         ]
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'username', 
+            'first_name', 
+            'last_name', 
+        ]
 
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         # fields = '__all__'
-        fields = ['title','image','user','description']
+        fields = ['title','image','description']
+
+class CommentSerializer(serializers.ModelSerializer):
+
+    user = UserSerializer()
+    # post = PostSerializer()
+    class Meta:
+        model = Comment
+        fields = ['user']
+        # fields = ['title','image','user','description']
 
 class PostSerializer(serializers.ModelSerializer):
+    comment = CommentSerializer()
     class Meta:
         model = Post
         # fields = '__all__'
-        fields = ['title','image','user','description','post_date']
-
-class CommentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Comment
-        fields = '__all__'
-        # fields = ['title','image','user','description']
+        fields = ['title','image','description','post_date','comment']
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,4 +46,4 @@ class TestimonialsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Testimonials
         # fields = '__all__'
-        fields = ['user','title','description','date_posted']
+        fields = ['title','description','date_posted']
