@@ -69,15 +69,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         SINGLEPARENT='SINGLEPARENT','SingleParent'
         COUNSELLOR='COUNSELLOR','Counsellor'
         
-        
-    
-    
-    
-    
     username = models.CharField(db_index=True, max_length=255, unique=True)
     f_name = models.CharField(('First Name'), max_length=50, blank=True)
     l_name = models.CharField(('Last Name'), max_length=50, blank=True)
-    phone = PhoneNumberField(blank=True)
+    
     user_role = models.CharField(choices=Roles.choices, max_length=30,null=False, blank=False)
     email = models.EmailField(db_index=True, unique=True)
     is_active = models.BooleanField(default=True)
@@ -117,6 +112,7 @@ class Profile(models.Model):
     user = models.OneToOneField(CustomUser,null=True,on_delete=models.CASCADE)
     prof_pic = CloudinaryField('images', default='http://res.cloudinary.com/dim8pysls/image/upload/v1639001486/x3mgnqmbi73lten4ewzv.png')
     bio = models.TextField(blank=True, max_length=255 ,default='please update your bio')
+    phone = PhoneNumberField(blank=True)
     
     def __str__(self):
         return self.user

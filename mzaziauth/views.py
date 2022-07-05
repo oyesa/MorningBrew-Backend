@@ -109,6 +109,16 @@ class ProfileUpdate(GenericAPIView):
             'profile': serializer.data
         }, status=status.HTTP_200_OK)
         
+class LogoutView(GenericAPIView):
+    permission_classes = (IsAuthenticated,)
+    def post(self, request):
+        response = Response()
+        response.delete_cookie('jwt')
+        response.data = {
+            'message': 'Logout Successful'
+        }
+        return response
+        
 class UserListView(ListAPIView):
     """
     A class for getting all user profiles

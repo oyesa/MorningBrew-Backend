@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'mzaziauth',
     'phonenumber_field',
     'rest_framework.authtoken',
+  
 ]
 
 MIDDLEWARE = [
