@@ -1,5 +1,3 @@
-
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,9 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cloudinary',
-    'auth',
-    'cloudinary',
-    'rest_framework.authentication',
+    'authLogin',
+    'rest_framework.authtoken',
+    'phonenumber_field',
 
 ]
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -121,11 +119,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+# the user we are using
+AUTH_USER_MODEL = 'authLogin.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#rest api settings
 REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
        'rest_framework.authentication.TokenAuthentication',
