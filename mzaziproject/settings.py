@@ -40,10 +40,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'backend1',
     'rest_framework',
     'cloudinary',
+<<<<<<< HEAD
     'community',
+=======
+    'mzaziauth',
+    'phonenumber_field',
+    'rest_framework.authtoken',
+>>>>>>> development
 ]
+
+cloudinary.config(
+  cloud_name = "oyesa",
+  api_key = "749352579693875",
+  api_secret = "W6qFNFY_0mRnS6YbzrzWwegcfCY",
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,13 +92,27 @@ WSGI_APPLICATION = 'mzaziproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#      'default':
+#      {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mzazidb',
+#         'USER': 'oyesa',
+#         'PASSWORD':'Mimo33',
+#     }
+# }
 DATABASES = {
      'default':
      {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mzazidb',
+<<<<<<< HEAD
         'USER': 'moringa',
         'PASSWORD':'jaelatieno',
+=======
+        'USER': 'rachel',
+        'PASSWORD':'hotspurs',
+>>>>>>> development
     }
 }
 
@@ -125,14 +152,32 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+AUTH_USER_MODEL = 'mzaziauth.CustomUser'
+
+# AUTH_USER_MODEL = 'backend1.User'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
 cloudinary.config(
   cloud_name = "oyesa",
   api_key = "749352579693875",
   api_secret = "W6qFNFY_0mRnS6YbzrzWwegcfCY",
 )
+=======
+REST_FRAMEWORK = {
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+    #    'rest_framework.authentication.TokenAuthentication',
+    #    
+    #    'rest_framework_simplejwt.authentication.JWTAuthentication'
+       'mzaziauth.backends.JWTAuthentication',
+       'rest_framework.authentication.SessionAuthentication',
+       
+   ),
+   'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.IsAdminUser', ),
+}
+
+>>>>>>> development
