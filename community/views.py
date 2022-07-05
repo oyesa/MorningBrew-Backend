@@ -6,11 +6,13 @@ from .serializers import *
 from .models import *
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
 
 # Create your views here.
 class CommunityViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
     queryset = Community.objects.all()
     serializer_class = CommunitySerializer
 class CommunityList(APIView):
@@ -47,11 +49,13 @@ def showcommunity(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class HoodViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
     queryset = Hood.objects.all()
     serializer_class = HoodSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
