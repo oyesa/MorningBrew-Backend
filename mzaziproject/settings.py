@@ -1,6 +1,5 @@
-
-
 from pathlib import Path
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,19 +26,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'backend1',
     'rest_framework',
     'cloudinary',
-    'auth',
-    'cloudinary',
-    'rest_framework.authentication',
-
+    'mzaziauth',
+    'phonenumber_field',
+    'rest_framework.authtoken',
 ]
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': "oyesa", 
     'API_KEY': "749352579693875", 
     'API_SECRET': "W6qFNFY_0mRnS6YbzrzWwegcfCY"
 }
+
+cloudinary.config(
+  cloud_name = "oyesa",
+  api_key = "749352579693875",
+  api_secret = "W6qFNFY_0mRnS6YbzrzWwegcfCY",
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,9 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mzaziproject.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
      'default':
@@ -121,17 +124,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+AUTH_USER_MODEL = 'mzaziauth.CustomUser'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
-       'rest_framework.authentication.TokenAuthentication',
+       'mzaziauth.backends.JWTAuthentication',
        'rest_framework.authentication.SessionAuthentication',
+       
    ),
-   'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAdminUser',
-   ),
+   'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.IsAdminUser', ),
 }
+
