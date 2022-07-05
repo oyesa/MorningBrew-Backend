@@ -43,13 +43,10 @@ INSTALLED_APPS = [
     'backend1',
     'rest_framework',
     'cloudinary',
-<<<<<<< HEAD
     'community',
-=======
     'mzaziauth',
     'phonenumber_field',
     'rest_framework.authtoken',
->>>>>>> development
 ]
 
 cloudinary.config(
@@ -106,13 +103,8 @@ DATABASES = {
      {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mzazidb',
-<<<<<<< HEAD
         'USER': 'moringa',
         'PASSWORD':'jaelatieno',
-=======
-        'USER': 'rachel',
-        'PASSWORD':'hotspurs',
->>>>>>> development
     }
 }
 
@@ -161,13 +153,11 @@ AUTH_USER_MODEL = 'mzaziauth.CustomUser'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-<<<<<<< HEAD
 cloudinary.config(
   cloud_name = "oyesa",
   api_key = "749352579693875",
   api_secret = "W6qFNFY_0mRnS6YbzrzWwegcfCY",
 )
-=======
 REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
     #    'rest_framework.authentication.TokenAuthentication',
@@ -180,4 +170,3 @@ REST_FRAMEWORK = {
    'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.IsAdminUser', ),
 }
 
->>>>>>> development
