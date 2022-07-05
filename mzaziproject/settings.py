@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'backend1',
     'rest_framework',
     'cloudinary',
+    'mzaziauth',
+    'phonenumber_field',
+    'rest_framework.authtoken',
 ]
 
 cloudinary.config(
@@ -83,6 +86,15 @@ WSGI_APPLICATION = 'mzaziproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#      'default':
+#      {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mzazidb',
+#         'USER': 'oyesa',
+#         'PASSWORD':'Mimo33',
+#     }
+# }
 DATABASES = {
      'default':
      {
@@ -129,6 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+AUTH_USER_MODEL = 'mzaziauth.CustomUser'
 
 # AUTH_USER_MODEL = 'backend1.User'
 
@@ -136,3 +149,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+    #    'rest_framework.authentication.TokenAuthentication',
+    #    
+    #    'rest_framework_simplejwt.authentication.JWTAuthentication'
+       'mzaziauth.backends.JWTAuthentication',
+       'rest_framework.authentication.SessionAuthentication',
+       
+   ),
+   'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.IsAdminUser', ),
+}
+
