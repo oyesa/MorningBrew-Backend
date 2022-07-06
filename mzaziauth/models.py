@@ -12,8 +12,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 from cloudinary.models import CloudinaryField
 from phonenumbers import CountryCodeSource
 
-
-
 # Create your models here.
 class CustomUserManager(BaseUserManager):
     
@@ -109,4 +107,10 @@ class Profile(models.Model):
     def save_profile(self):
         '''Add Profile to database'''
         self.save()
+
+
+
+
+
+  
    
