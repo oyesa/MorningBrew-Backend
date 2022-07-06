@@ -9,7 +9,6 @@ from .renderers import UserJSONRenderer
 from rest_framework.generics import GenericAPIView,ListAPIView
 from .models import Profile
 from rest_framework.authtoken.models import Token
-# from .authentication_handlers import *
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 
 
