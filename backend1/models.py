@@ -1,11 +1,19 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django.contrib.auth import get_user_model
+from mzaziauth.models import CustomUser
+
+User = get_user_model()
 
 # Create your models here.
 class Service(models.Model):
     title = models.CharField(max_length=150)
     image = CloudinaryField('image',null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
+
+    def get_user(self):
+        return{"username":self.user.username}
 
     def save_service(self):
         self.save
@@ -14,9 +22,11 @@ class Service(models.Model):
         return self.title
 
 class Comment(models.Model):
+    # user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
     # post = models.ForeignKey(Post, related_name = "comment", on_delete=models.CASCADE)
 
-    def save_group(self):
+
+    def save_comment(self):
         self.save()
 
 class Post(models.Model):
@@ -38,7 +48,6 @@ class Group(models.Model):
         WELLBEING='WELLBEING','wellbeing'
         SINGLEPARENTWITHCHILDRENWITHADDITIONALNEEDS='SINGLEPARENTWITHCHILDRENWITHADDITIONALNEEDS(CAN)','singleparentwithchildrenwithadditionalneeds(can)'
         SINGLEPARENTFATHERS='SINGLEPARENTFATHERS','singleparentfathers'
-        
     
     image = CloudinaryField('image',null=True)
     description = models.TextField()

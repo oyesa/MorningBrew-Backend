@@ -1,25 +1,25 @@
-from dataclasses import fields
-from statistics import mode
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 from .models import *
 from django.contrib.auth.models import User
 import enum
+from mzaziauth.models import CustomUser
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = CustomUser
         fields = [
-            'username', 
-            'first_name', 
-            'last_name', 
+            'username',  
         ]
 
 class ServiceSerializer(serializers.ModelSerializer):
+    # user = UserSerializer()
+    # import pdb
+    # pdb.set_trace()
     class Meta:
         model = Service
         # fields = '__all__'
-        fields = ['title','image','description']
+        fields = ['image','title','description',]
 
 class CommentSerializer(serializers.ModelSerializer):
 
@@ -31,11 +31,11 @@ class CommentSerializer(serializers.ModelSerializer):
         # fields = ['title','image','user','description']
 
 class PostSerializer(serializers.ModelSerializer):
-    comment = CommentSerializer()
+    # comment = CommentSerializer()
     class Meta:
         model = Post
         # fields = '__all__'
-        fields = ['title','image','description','post_date','comment']
+        fields = ['title','image','description','post_date',]
 
 class GroupSerializer(serializers.ModelSerializer):
     class Category(enum.Enum):

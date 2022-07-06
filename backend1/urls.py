@@ -11,4 +11,6 @@ router.register('testimonial',TestimonialsViewSet)
 
 urlpatterns = [
     path('api/',include(router.urls)),
+    path('testimonials/', TestimonialsListView.as_view(), name='list_testimonials'),
+    path('services/',  ServicesListView.as_view(), name='list_services'),
 ]
