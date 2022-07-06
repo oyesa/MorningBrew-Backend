@@ -6,12 +6,14 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.generics import GenericAPIView,ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
+import json
 
 # Create your views here.
 class ServiceViewSet(ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class=ServiceSerializer
     queryset=Service.objects.all()
+   
 
 
 class PostViewSet(ModelViewSet):
@@ -35,17 +37,32 @@ class TestimonialsViewSet(ModelViewSet):
     serializer_class=TestimonialsSerializer
     queryset=Testimonials.objects.all()
 
-class ServiceListView(ListAPIView):
+class TestimonialsListView(ListAPIView):
     """
     A class for getting all services
     """
     permission_classes = (AllowAny,)
-    serializer_class = ServiceSerializer
+    serializer_class =  TestimonialsSerializer
+    queryset = Testimonials.objects.all()
+
+    def list(self, request):
+        queryset = self.queryset.filter()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response({
+            'testimonials': serializer.data
+        }, status=status.HTTP_200_OK)
+
+class ServicesListView(ListAPIView):
+    """
+    A class for getting all services
+    """
+    permission_classes = (AllowAny,)
+    serializer_class =  ServiceSerializer
     queryset = Service.objects.all()
 
     def list(self, request):
         queryset = self.queryset.filter()
         serializer = self.get_serializer(queryset, many=True)
         return Response({
-            'service': serializer.data
+            'services': serializer.data
         }, status=status.HTTP_200_OK)
