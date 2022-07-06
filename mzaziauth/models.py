@@ -68,8 +68,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     class Roles(models.TextChoices):
         SINGLEPARENT='SINGLEPARENT','SingleParent'
         COUNSELLOR='COUNSELLOR','Counsellor'
-    
-    
+        
+        
     username = models.CharField(db_index=True, max_length=255, unique=True)
     f_name = models.CharField(('First Name'), max_length=50, blank=True)
     l_name = models.CharField(('Last Name'), max_length=50, blank=True)

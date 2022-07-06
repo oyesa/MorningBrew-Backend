@@ -4,6 +4,7 @@ from .models import *
 from django.contrib.auth.models import User
 import enum
 from mzaziauth.models import CustomUser
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
@@ -41,14 +42,17 @@ class GroupSerializer(serializers.ModelSerializer):
         wellbeing= 'wellbeing'
         singleparentwithchildrenwithadditionalneeds = 'singleparentwithchildrenwithadditionalneeds(can)'
         singleparentfathers = 'singleparentfathers'
+        
         def __str__(self):
             return self.value
+        
     categorys = [cat.value for cat in Category]
     categories = serializers.ChoiceField(choices=categorys,required=True)
+
     class Meta:
         model = Group
         # fields = '__all__'
-        fields = ['image','categories','description']
+        fields = ['image','description','categories']
 
 class TestimonialsSerializer(serializers.ModelSerializer):
     class Meta:

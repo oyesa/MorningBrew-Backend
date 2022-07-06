@@ -5,24 +5,25 @@ from cloudinary.models import CloudinaryField
 
 
 class Community(models.Model):
-    CATEGORY =(
-        ('share your experience','share your experience'),
-        ('Join a mzazi space event','Join a mzazi space event'),
-        ('Support and Services','Support and Services'),
-        ('Single parent Groups','Single parent Groups'),
+    
+    class Category(models.TextChoices):
+        SHAREYOUREXPERIENCE='SHAREYOUREXPERIENCE','Shareyourexperience'
+        JOINAMZAZISPACEEVENT='JOINAMZAZISPACEEVENT','Joinmzazispaceevent'
+        SUPPORTANDSERVICES='SUPPORTANDSERVICES','Supportandservices'
+        SINGLEPARENTGROUPS='SINGLEPARENTGROUPS','Singleparentgroups'
         
-    )
     
     image = CloudinaryField('image', default='image')
     description = models.TextField(blank=True, max_length=300)
-    category = models.CharField(max_length=50, null=True, choices=CATEGORY)
+    categories = models.CharField(choices=Category.choices, max_length=200,null=False, blank=False,default="")
 
-    def save(self):
+
+    def save_community(self):
         self.save()
 
 
     def __str__(self):
-       return self.category
+       return self.categories
 
     def create_community(self):
         """
