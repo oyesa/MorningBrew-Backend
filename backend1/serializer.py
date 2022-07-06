@@ -4,6 +4,7 @@ from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 from .models import *
 from django.contrib.auth.models import User
+import enum
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,10 +38,21 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ['title','image','description','post_date','comment']
 
 class GroupSerializer(serializers.ModelSerializer):
+    class Category(enum.Enum):
+        wellbeing= 'wellbeing'
+        singleparentwithchildrenwithadditionalneeds = 'singleparentwithchildrenwithadditionalneeds(can)'
+        singleparentfathers = 'singleparentfathers'
+        
+        def __str__(self):
+            return self.value
+        
+    categorys = [cat.value for cat in Category]
+    categories = serializers.ChoiceField(choices=categorys,required=True)
+
     class Meta:
         model = Group
         # fields = '__all__'
-        fields = ['category','image','description']
+        fields = ['image','description','categories']
 
 class TestimonialsSerializer(serializers.ModelSerializer):
     class Meta:
