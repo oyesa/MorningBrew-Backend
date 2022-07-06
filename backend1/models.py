@@ -1,12 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.contrib.auth import get_user_model
+from mzaziauth.models import CustomUser
+
+User = get_user_model()
 
 # Create your models here.
 class Service(models.Model):
     title = models.CharField(max_length=150)
     image = CloudinaryField('image',null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE,blank=True,null=True)
     description = models.TextField()
 
     def save_service(self):
@@ -16,10 +20,11 @@ class Service(models.Model):
         return self.title
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
     # post = models.ForeignKey(Post, related_name = "comment", on_delete=models.CASCADE)
 
-    def save_group(self):
+
+    def save_comment(self):
         self.save()
 
 class Post(models.Model):
@@ -37,21 +42,18 @@ class Post(models.Model):
         return self.title
 
 class Group(models.Model):
-    CATEGORY =(
-        ('Wellbeing','Wellbeing'),
-        ('Single Parent with Children with Additional Needs (CAN)','Single Parent with Children with Additional Needs (CAN)'),
-        ('Single Parent Fathers','Single Parent Fathers'),        
-    )
-    
-    category = models.CharField(max_length=200, null=True, choices=CATEGORY)
+    class Category(models.TextChoices):
+        WELLBEING='WELLBEING','wellbeing'
+        SINGLEPARENTWITHCHILDRENWITHADDITIONALNEEDS='SINGLEPARENTWITHCHILDRENWITHADDITIONALNEEDS(CAN)','singleparentwithchildrenwithadditionalneeds(can)'
+        SINGLEPARENTFATHERS='SINGLEPARENTFATHERS','singleparentfathers'
     image = CloudinaryField('image',null=True)
     description = models.TextField()
-
+    categories = models.CharField(choices=Category.choices, max_length=200,null=False, blank=False,default="")
     def save_group(self):
         self.save()
 
 class Testimonials(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
     title = models.CharField(max_length=200,blank=True)
     description = models.TextField()
     date_posted =  models.DateField(auto_now_add=True)
