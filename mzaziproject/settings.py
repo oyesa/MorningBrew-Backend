@@ -47,7 +47,13 @@ INSTALLED_APPS = [
     'mzaziauth',
     'phonenumber_field',
     'rest_framework.authtoken',
+    'corsheaders',
 ]
+
+# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:4200',
+)
 
 cloudinary.config(
   cloud_name = "oyesa",
@@ -58,6 +64,7 @@ cloudinary.config(
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -85,26 +92,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mzaziproject.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-# DATABASES = {
-#      'default':
-#      {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'mzazidb',
-#         'USER': 'oyesa',
-#         'PASSWORD':'Mimo33',
-#     }
-# }
 DATABASES = {
      'default':
      {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mzazidb',
-        'USER': 'moringa',
-        'PASSWORD':'jaelatieno',
+        'USER': 'rachel',
+        'PASSWORD':'hotspurs',
     }
 }
 
