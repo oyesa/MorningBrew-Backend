@@ -23,11 +23,11 @@ class ServiceSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
 
-    user = UserSerializer()
+    username = UserSerializer()
     # post = PostSerializer()
     class Meta:
         model = Comment
-        fields = ['user']
+        fields = ['post','comment','username']
         # fields = ['title','image','user','description']
 
 class PostSerializer(serializers.ModelSerializer):
