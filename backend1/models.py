@@ -37,11 +37,9 @@ class Post(models.Model):
 
 class Comment(models.Model):
     comment = models.CharField(max_length=500,blank=True)
-    # username = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
-    # post = models.ForeignKey(Post, related_name = "comment", on_delete=models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
+    post = models.ForeignKey(Post, related_name = "comment", on_delete=models.CASCADE,default='')
     
-    # user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
-    # post = models.ForeignKey(Post, related_name = "comment", on_delete=models.CASCADE)
 
 
     def save_comment(self):
