@@ -1,10 +1,9 @@
 import enum
 from django.contrib.auth import authenticate
 from django.forms import ValidationError
-
 from rest_framework import serializers
-
 from .models import *
+
 
 class ProfileSerializer(serializers.ModelSerializer):
     
@@ -17,9 +16,6 @@ class ProfileSerializer(serializers.ModelSerializer):
 class RegistrationSerializer(serializers.ModelSerializer):
     """Serializers registration requests and creates a new user."""
     
-    
-
-   
     password = serializers.CharField(
         max_length=128,
         min_length=8,
@@ -82,3 +78,23 @@ class UserListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = '__all__'
+
+
+class LogoutSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+
+    default_error_message = {
+        'bad_token': ('Token is expired or invalid')
+    }
+
+    def validate(self, attrs):
+        self.token = attrs['refresh']
+        return attrs
+
+    # def save(self, **kwargs):
+
+    #     try:
+    #         RefreshToken(self.token).blacklist()
+
+    #     except TokenError:
+    #         self.fail('bad_token')
