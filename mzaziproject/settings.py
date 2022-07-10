@@ -82,25 +82,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mzaziproject.wsgi.application'
 
-<<<<<<< HEAD
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-=======
->>>>>>> ccbc21e94f62605ffd780aee9f3999ec9c2f591a
 DATABASES = {
      'default':
      {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mzazidb',
-<<<<<<< HEAD
         'USER': 'moringa',
         'PASSWORD':'Mimo33',
-=======
-        'USER': 'rachel',
-        'PASSWORD':'hotspurs',
->>>>>>> ccbc21e94f62605ffd780aee9f3999ec9c2f591a
     }
 }
 
@@ -139,14 +131,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 AUTH_USER_MODEL = 'mzaziauth.CustomUser'
 
-<<<<<<< HEAD
-
-=======
-# AUTH_USER_MODEL = 'backend1.User'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
->>>>>>> ccbc21e94f62605ffd780aee9f3999ec9c2f591a
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
