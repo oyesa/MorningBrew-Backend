@@ -38,7 +38,7 @@ class TestimonialsViewSet(ModelViewSet):
 
 class TestimonialsListView(ListAPIView):
     """
-    A class for getting all services
+    A class for getting all testimonials
     """
     permission_classes = (AllowAny,)
     serializer_class =  TestimonialsSerializer
@@ -53,7 +53,7 @@ class TestimonialsListView(ListAPIView):
 
 class ServicesListView(ListAPIView):
     """
-    A class for getting all services
+    A class for getting all srvices
     """
     permission_classes = (AllowAny,)
     serializer_class =  ServiceSerializer
@@ -64,4 +64,49 @@ class ServicesListView(ListAPIView):
         serializer = self.get_serializer(queryset, many=True)
         return Response({
             'services': serializer.data
+        }, status=status.HTTP_200_OK)
+
+class PostsListView(ListAPIView):
+    """
+    A class for getting all posts
+    """
+    permission_classes = (AllowAny,)
+    serializer_class =  PostSerializer
+    queryset = Post.objects.all()
+
+    def list(self, request):
+        queryset = self.queryset.filter()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response({
+            'posts': serializer.data
+        }, status=status.HTTP_200_OK)
+
+class GroupsListView(ListAPIView):
+    """
+    A class for getting all groups
+    """
+    permission_classes = (AllowAny,)
+    serializer_class =  GroupSerializer
+    queryset = Group.objects.all()
+
+    def list(self, request):
+        queryset = self.queryset.filter()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response({
+            'groups': serializer.data
+        }, status=status.HTTP_200_OK)
+
+class CommentsListView(ListAPIView):
+    """
+    A class for getting all comments
+    """
+    permission_classes = (AllowAny,)
+    serializer_class =  CommentSerializer
+    queryset = Comment.objects.all()
+
+    def list(self, request):
+        queryset = self.queryset.filter()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response({
+            'comments': serializer.data
         }, status=status.HTTP_200_OK)

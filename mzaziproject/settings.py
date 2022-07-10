@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'mzaziauth',
     'phonenumber_field',
     'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -53,6 +54,7 @@ cloudinary.config(
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

@@ -14,6 +14,9 @@ router.register('event', views.EventViewSet)
 
 urlpatterns = [
     path('api/',include(router.urls)),
-    path('api/community/<int:pk>/',views.showcommunity, name='community')
+    path('communitys/',  CommunitysListView.as_view(), name='list_communitys'),
+    path('hoods/',  HoodsListView.as_view(), name='list_hoods'),
+    path('events/',  EventsListView.as_view(), name='list_events'),
+    path('api/community/<int:pk>/',views.showcommunity, name='community'),
 
 ]
