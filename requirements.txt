@@ -1,14 +1,17 @@
 asgiref==3.5.2
 backports.zoneinfo==0.2.1
 <<<<<<< HEAD
+<<<<<<< HEAD
 Django==4.0.6
 djangorestframework==3.13.1
 =======
+=======
+>>>>>>> development
 certifi==2022.6.15
 cffi==1.15.1
 cloudinary==1.29.0
 cryptography==37.0.2
-Django==4.0.4
+Django==4.0.6
 django-phonenumber-field==6.3.0
 djangorestframework==3.13.1
 jwt==1.3.1
@@ -16,6 +19,11 @@ phonenumbers==8.12.51
 psycopg2==2.9.3
 pycparser==2.21
 PyJWT==2.4.0
+<<<<<<< HEAD
 >>>>>>> ccbc21e94f62605ffd780aee9f3999ec9c2f591a
+=======
+>>>>>>> development
 pytz==2022.1
+six==1.16.0
 sqlparse==0.4.2
+urllib3==1.26.9

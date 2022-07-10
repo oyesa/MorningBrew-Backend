@@ -33,17 +33,13 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
 ]
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': "oyesa", 
     'API_KEY': "749352579693875", 
     'API_SECRET': "W6qFNFY_0mRnS6YbzrzWwegcfCY"
 }
-
-# CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:4200',
-)
 
 cloudinary.config(
   cloud_name = "oyesa",

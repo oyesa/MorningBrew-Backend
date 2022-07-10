@@ -15,7 +15,6 @@ class ServiceViewSet(ModelViewSet):
     queryset=Service.objects.all()
    
 
-
 class PostViewSet(ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class=PostSerializer

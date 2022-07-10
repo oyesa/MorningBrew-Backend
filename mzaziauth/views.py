@@ -1,19 +1,30 @@
+from urllib import response
 from .backends import JWTAuthentication
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from mzaziauth.serializers import *
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status,generics,permissions
 from .renderers import UserJSONRenderer
 from rest_framework.generics import GenericAPIView,ListAPIView
 from .models import Profile
 from rest_framework.authtoken.models import Token
-# from .authentication_handlers import *
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 
 
 # Create your views here.
+
+class AuthUserAPIView(GenericAPIView):
+    
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request):
+        user = request.user
+        serializer = RegistrationSerializer(user)
+        return response.Response({'user': serializer.data})
+
+
 class RegistrationAPIView(APIView):
     permission_classes = (AllowAny,)
     renderer_classes = (UserJSONRenderer,)
@@ -24,8 +35,6 @@ class RegistrationAPIView(APIView):
         data = request.data
         user = request.data.get('CustomUser', {})
         serializer = self.serializer_class(data=user)
-        # import pdb
-        # pdb.set_trace()
         serializer.is_valid(raise_exception=True)
         serializer.save()
         
@@ -120,3 +129,17 @@ class UserListView(ListAPIView):
         return Response({
             'profiles': serializer.data
         }, status=status.HTTP_200_OK)
+
+
+
+class LogoutAPIView(generics.GenericAPIView):
+    serializer_class = LogoutSerializer
+
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)

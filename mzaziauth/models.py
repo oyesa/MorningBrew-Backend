@@ -12,8 +12,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 from cloudinary.models import CloudinaryField
 from phonenumbers import CountryCodeSource
 
-
-
 # Create your models here.
 class CustomUserManager(BaseUserManager):
     
@@ -56,10 +54,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         SINGLEPARENT='SINGLEPARENT','SingleParent'
         COUNSELLOR='COUNSELLOR','Counsellor'
         
-<<<<<<< HEAD
-=======
-        
->>>>>>> ccbc21e94f62605ffd780aee9f3999ec9c2f591a
     username = models.CharField(db_index=True, max_length=255, unique=True)
     f_name = models.CharField(('First Name'), max_length=50, blank=True)
     l_name = models.CharField(('Last Name'), max_length=50, blank=True)
@@ -110,4 +104,9 @@ class Profile(models.Model):
     def save_profile(self):
         '''Add Profile to database'''
         self.save()
-   
+
+
+
+
+
+
