@@ -57,13 +57,13 @@ class Group(models.Model):
     categories = models.CharField(choices=Category.choices, max_length=200,null=False, blank=False,default="")
 
 
-    def save_group(self):
-        self.save()
+#     def save_group(self):
+#         self.save()
 
 class Testimonials(models.Model):
     title = models.CharField(max_length=200,blank=True)
     description = models.TextField()
     date_posted =  models.DateField(auto_now_add=True)
 
-    def save_group(self):
-        self.save()
+#     def save_group(self):
+#         self.save()

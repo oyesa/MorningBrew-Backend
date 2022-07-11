@@ -6,7 +6,8 @@ urlpatterns = [
     path('login/',LoginAPIView.as_view(), name='AuthLogin'),
     path('profile/<str:username>/',ProfileUpdate.as_view(), name='profileupdate'),
     path('profiles/', UserListView.as_view(), name='list_users'),
-  
+    path('logout/', LogoutAPIView.as_view(), name="logout"),
+    path('user/', AuthUserAPIView.as_view(), name="user"),
    
   
 ]

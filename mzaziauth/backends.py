@@ -6,7 +6,26 @@ from .models import CustomUser
 #    This class will handle users' authentication
 class JWTAuthentication(authentication.BaseAuthentication):
     def authenticate(self, request):
+
         # prefix = 'Bearer'
+        # header = authentication.get_authorization_header(request).split()
+
+        # if not header:
+        #     return None
+
+        # if len(header) < 2:
+        #     resp = 'The authorization header provided is invalid!'
+        #     raise exceptions.AuthenticationFailed(resp)
+
+        # if header[0]!= prefix:
+        #     resp = 'Please use a Bearer token!'
+        #     raise exceptions.AuthenticationFailed(resp)
+
+        # token = header[1]
+
+        # return self.authenticate_token(request, token)
+
+
         header = authentication.get_authorization_header(request).split()
 
         if not header:
@@ -16,10 +35,7 @@ class JWTAuthentication(authentication.BaseAuthentication):
             resp = 'The authorization header provided is invalid!'
             raise exceptions.AuthenticationFailed(resp)
 
-        # if header[0]!= prefix:
-        #     resp = 'Please use a Bearer token!'
-        #     raise exceptions.AuthenticationFailed(resp)
-
+       
         token = header[1]
 
         return self.authenticate_token(request, token)
@@ -54,5 +70,6 @@ class JWTAuthentication(authentication.BaseAuthentication):
         #     raise exceptions.AuthenticationFailed(
         #         'This user has not been verified'
         #     )
+
 
         return user, token

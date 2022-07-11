@@ -1,10 +1,9 @@
 import enum
 from django.contrib.auth import authenticate
 from django.forms import ValidationError
-
 from rest_framework import serializers
-
 from .models import *
+
 
 class ProfileSerializer(serializers.ModelSerializer):
     
@@ -16,8 +15,6 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class RegistrationSerializer(serializers.ModelSerializer):
     """Serializers registration requests and creates a new user."""
-    
-    
 
    
     password = serializers.CharField(
@@ -82,3 +79,6 @@ class UserListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = '__all__'
+
+
+
