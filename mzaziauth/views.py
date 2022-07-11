@@ -1,11 +1,11 @@
-from urllib import response
+
 from .backends import JWTAuthentication
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from mzaziauth.serializers import *
 from rest_framework.response import Response
-from rest_framework import status,generics,permissions
+from rest_framework import status,generics,permissions,response
 from .renderers import UserJSONRenderer
 from rest_framework.generics import GenericAPIView,ListAPIView
 from .models import Profile
@@ -133,13 +133,12 @@ class UserListView(ListAPIView):
 
 
 class LogoutAPIView(generics.GenericAPIView):
-    serializer_class = LogoutSerializer
+     permission_classes = (IsAuthenticated,)
 
-    permission_classes = (permissions.IsAuthenticated,)
-
-    def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response(status=status.HTTP_204_NO_CONTENT)
+     def post(self, request):
+        response = Response()
+        response.delete_cookie('jwt')
+        response.data = {
+            'message': 'Logout Successful'
+        }
+        return response
