@@ -17,15 +17,18 @@ class CommunitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Community
-        fields=['image','description','categories']
+        fields = '__all__'
+        # fields=['image','description','categories']
 
 class HoodSerializer(serializers.ModelSerializer):
     class Meta:
         model=Hood
-        fields=['name','description','location']
+        fields = '__all__'
+        # fields=['name','description','location']
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model=Event
-        fields=['title','image','description','date']
+        fields = '__all__'
+        # fields=['title','image','description','date']
         

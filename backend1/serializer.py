@@ -18,8 +18,8 @@ class ServiceSerializer(serializers.ModelSerializer):
     # pdb.set_trace()
     class Meta:
         model = Service
-        # fields = '__all__'
-        fields = ['image','title','description',]
+        fields = '__all__'
+        # fields = ['image','title','description',]
 
 class CommentSerializer(serializers.ModelSerializer):
 
@@ -34,8 +34,8 @@ class PostSerializer(serializers.ModelSerializer):
     # comment = CommentSerializer()
     class Meta:
         model = Post
-        # fields = '__all__'
-        fields = ['title','image','description','post_date',]
+        fields = '__all__'
+        # fields = ['title','image','description','post_date',]
 
 class GroupSerializer(serializers.ModelSerializer):
     class Category(enum.Enum):
@@ -51,11 +51,11 @@ class GroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Group
-        # fields = '__all__'
-        fields = ['image','description','categories']
+        fields = '__all__'
+        # fields = ['image','description','categories']
 
 class TestimonialsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Testimonials
-        # fields = '__all__'
-        fields = ['title','description','date_posted']
+        fields = '__all__'
+        # fields = ['title','description','date_posted']
